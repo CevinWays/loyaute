@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:loyaute/app/consts/loyaute_images.dart';
 import 'package:loyaute/app/styles/loyaute_text_style.dart';
 import 'package:loyaute/features/core/widgets/loyaute_button.dart';
+import 'package:loyaute/features/login/presentation/pages/login_page.dart';
+import 'package:loyaute/features/register/presentation/pages/register_page.dart';
 
 import '../../../../app/styles/colors.dart';
 
@@ -19,12 +22,9 @@ class OnboardingPage extends StatelessWidget {
 
   Widget buildBody(BuildContext context) {
     return SafeArea(
-      child: Container(
-        margin: const EdgeInsets.only(
-          top: 48.0,
-        ),
-        width: double.infinity,
-        height: double.infinity,
+      child: SizedBox(
+        width: MediaQuery.sizeOf(context).width,
+        height: MediaQuery.sizeOf(context).height,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,6 +32,7 @@ class OnboardingPage extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.only(
+                  top: 48,
                   bottom: 16.0,
                 ),
                 width: MediaQuery.sizeOf(context).width,
@@ -105,26 +106,29 @@ class OnboardingPage extends StatelessWidget {
                 textColor: blueLoyautePrimary,
                 onPressed: () => onSignInPressed(context),
               ),
-              GestureDetector(
-                onTap: () => onSignUpPressed(context),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Haven’t registered yet ? ',
-                    style: LoyauteTextStyle.bodyText1(
-                      context: context,
-                      color: whiteClear100,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Sign Up',
-                        style: LoyauteTextStyle.bodyText1(
-                          context: context,
-                          color: blackLoyaute,
-                          fontWeight: FontWeight.w700,
-                        ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 16.0),
+                child: GestureDetector(
+                  onTap: () => onSignUpPressed(context),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Haven’t registered yet ? ',
+                      style: LoyauteTextStyle.bodyText1(
+                        context: context,
+                        color: whiteClear100,
+                        fontWeight: FontWeight.w400,
                       ),
-                    ],
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Sign Up',
+                          style: LoyauteTextStyle.bodyText1(
+                            context: context,
+                            color: blackLoyaute,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -135,7 +139,9 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 
-  void onSignInPressed(BuildContext context) => debugPrint('onSignInPressed');
+  void onSignInPressed(BuildContext context) =>
+      Get.toNamed(LoginPage.routeName);
 
-  void onSignUpPressed(BuildContext context) => debugPrint('onSignUpPressed');
+  void onSignUpPressed(BuildContext context) =>
+      Get.toNamed(RegisterPage.routeName);
 }
