@@ -13,6 +13,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -26,6 +27,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -39,6 +41,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -52,6 +55,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -65,6 +69,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -78,6 +83,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -91,6 +97,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -104,6 +111,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -117,6 +125,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -130,6 +139,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -143,6 +153,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -156,6 +167,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 
@@ -169,6 +181,7 @@ class LoyauteTextStyle extends  TextStyle{
           color: color,
           decoration: decoration,
           fontWeight: fontWeight,
+          fontFamily: defaultFontLoyaute,
         );
   }
 }
