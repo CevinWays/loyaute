@@ -15,6 +15,8 @@ class LoyauteButton extends StatelessWidget {
     this.backgroundColor = blueLoyautePrimary,
     this.borderSideColor = whiteClear100,
     this.textColor,
+    this.height,
+    this.textStyle,
   });
 
   final String textButton;
@@ -22,17 +24,20 @@ class LoyauteButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final double? width;
+  final double? height;
   final bool isDisabled;
   final double? radius;
   final Color backgroundColor;
   final Color borderSideColor;
   final Color? textColor;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin ?? const EdgeInsets.all(0),
       width: width ?? double.infinity,
+      height: height,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -56,7 +61,7 @@ class LoyauteButton extends StatelessWidget {
         onPressed: () => onPressed?.call(),
         child: Text(
           textButton,
-          style: LoyauteTextStyle.button(
+          style: textStyle ?? LoyauteTextStyle.button(
             context: context,
             color: textColor ?? blackSpace100,
           ),

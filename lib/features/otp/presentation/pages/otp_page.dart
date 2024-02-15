@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:loyaute/app/consts/loyaute_images.dart';
 import 'package:loyaute/app/styles/colors.dart';
 import 'package:loyaute/features/core/widgets/loyaute_button.dart';
+import 'package:loyaute/features/home/presentation/pages/home_page.dart';
 import 'package:loyaute/features/otp/presentation/get/otp_controller.dart';
 
 import '../../../../app/styles/loyaute_text_style.dart';
@@ -138,5 +139,5 @@ class OtpPage extends GetView<OtpController> {
     );
   }
 
-  void onSubmitOtp(BuildContext context) {}
+  void onSubmitOtp(BuildContext context) => Get.toNamed(HomePage.routeName);
 }
