@@ -13,6 +13,8 @@ import 'package:loyaute/features/profile/presentation/get/profile_binding.dart';
 import 'package:loyaute/features/profile/presentation/pages/profile_page.dart';
 import 'package:loyaute/features/register/presentation/get/register_binding.dart';
 import 'package:loyaute/features/register/presentation/pages/register_page.dart';
+import 'package:loyaute/features/voucher/presentation/get/voucher_binding.dart';
+import 'package:loyaute/features/voucher/presentation/pages/voucher_page.dart';
 
 import '../features/splash/presentation/get/splash_binding.dart';
 import '../features/splash/presentation/pages/splash_page.dart';
@@ -59,5 +61,10 @@ final pageRoutes = [
     name: HistoryPage.routeName,
     page: () => const HistoryPage(),
     binding: HistoryBinding(),
+  ),
+  GetPage(
+    name: VoucherPage.routeName,
+    page: () => const VoucherPage(),
+    binding: VoucherBinding(),
   ),
 ];

@@ -5,6 +5,7 @@ import 'package:loyaute/app/styles/colors.dart';
 import 'package:loyaute/features/history/presentation/pages/history_page.dart';
 import 'package:loyaute/features/home/presentation/get/home_controller.dart';
 import 'package:loyaute/features/profile/presentation/pages/profile_page.dart';
+import 'package:loyaute/features/voucher/presentation/pages/voucher_page.dart';
 
 import '../../../../app/styles/loyaute_text_style.dart';
 
@@ -224,28 +225,31 @@ class HomePage extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Container(
-                          width: 56.0,
-                          height: 56.0,
-                          decoration: const ShapeDecoration(
-                              color: blueLoyautePrimary, shape: CircleBorder()),
-                          child: Image.asset(
-                            imgLoyautePlain,
-                            width: 21.0,
-                            height: 17.5,
+                    GestureDetector(
+                      onTap: () => onVoucherPressed(context),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 56.0,
+                            height: 56.0,
+                            decoration: const ShapeDecoration(
+                                color: blueLoyautePrimary, shape: CircleBorder()),
+                            child: Image.asset(
+                              imgLoyautePlain,
+                              width: 21.0,
+                              height: 17.5,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                        Text(
-                          'Voucher',
-                          style: LoyauteTextStyle.subtitle2(
-                              context: context, color: blackLoyaute),
-                        )
-                      ],
+                          const SizedBox(
+                            height: 8.0,
+                          ),
+                          Text(
+                            'Voucher',
+                            style: LoyauteTextStyle.subtitle2(
+                                context: context, color: blackLoyaute),
+                          )
+                        ],
+                      ),
                     ),
                     Column(
                       children: [
@@ -372,4 +376,7 @@ class HomePage extends GetView<HomeController> {
 
   void onHistoryPointPressed(BuildContext context) =>
       Get.toNamed(HistoryPage.routeName);
+
+  void onVoucherPressed(BuildContext context) =>
+      Get.toNamed(VoucherPage.routeName);
 }
