@@ -144,6 +144,8 @@ const Color backgroundColorSuccess = Color(0xffF0FDF4);
 const Color backgroundColorWarning = Color(0xffFFF7ED);
 
 const Color blueLoyautePrimary = Color(0xff007DFC);
+const Color blueLoyauteLight = Color(0xffD9ECFF);
 const Color grayLoyaute = Color(0xffD9D9D9);
 const Color grayLoyaute1 = Color(0xff979797);
+const Color grayLoyaute2 = Color(0xffF6F7FB);
 const Color blackLoyaute = Color(0xff272A2D);

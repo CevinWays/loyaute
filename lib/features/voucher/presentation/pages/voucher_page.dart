@@ -31,55 +31,65 @@ class _VoucherPageState extends State<VoucherPage> {
 
   Widget buildBody(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading:
-            GestureDetector(onTap: () => Navigator.pop(context), child: const Icon(Icons.arrow_back_ios, size: 15, color: Colors.black)),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          'Voucher Detail',
-          style: LoyauteTextStyle.headline6(
-            context: context,
-            color: blackLoyaute,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+      appBar: buildAppBar(context),
+      body: buildTab(context),
+    );
+  }
+
+  Widget buildTab(BuildContext context) {
+    return DefaultTabController(
+      length: 5,
+      child: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 234.0,
+              floating: false,
+              pinned: false,
+              leading: Container(),
+              flexibleSpace: Image.asset(
+                "assets/images/img_voucher_detail.png",
+                fit: BoxFit.cover,
+              ),
+            ),
+            SliverPersistentHeader(
+              delegate: SliverAppBarDelegate(
+                const TabBar(
+                  labelColor: Colors.black87,
+                  unselectedLabelColor: Colors.grey,
+                  tabs: [
+                    Tab(text: "General"),
+                    Tab(text: "Benefit"),
+                    Tab(text: "How to get"),
+                    Tab(text: "Terms and conditions"),
+                    Tab(text: "Another promo"),
+                  ],
+                ),
+              ),
+              pinned: true,
+            ),
+          ];
+        },
+        body: _buildContent(context),
       ),
-      body: DefaultTabController(
-        length: 5,
-        child: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                expandedHeight: 234.0,
-                floating: false,
-                pinned: false,
-                leading: Container(),
-                flexibleSpace: Image.asset(
-                  "assets/images/img_voucher_detail.png",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SliverPersistentHeader(
-                delegate: SliverAppBarDelegate(
-                  const TabBar(
-                    labelColor: Colors.black87,
-                    unselectedLabelColor: Colors.grey,
-                    tabs: [
-                      Tab(text: "General"),
-                      Tab(text: "Benefit"),
-                      Tab(text: "How to get"),
-                      Tab(text: "Terms and conditions"),
-                      Tab(text: "Another promo"),
-                    ],
-                  ),
-                ),
-                pinned: true,
-              ),
-            ];
-          },
-          body: _buildContent(context),
+    );
+  }
+
+  PreferredSizeWidget buildAppBar(BuildContext context) {
+    return AppBar(
+      leading: GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: const Icon(Icons.arrow_back_ios,
+              size: 15, color: Colors.black)),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      title: Text(
+        'Voucher Detail',
+        style: LoyauteTextStyle.headline6(
+          context: context,
+          color: blackLoyaute,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
@@ -190,18 +200,6 @@ class _VoucherPageState extends State<VoucherPage> {
             textAlign: TextAlign.justify,
           ),
           const SizedBox(height: 30),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: List.generate(
-              350 ~/ (10 + 5),
-              (_) => Container(
-                width: 10,
-                height: 0.5,
-                color: grayLoyaute,
-                margin: const EdgeInsets.only(left: 5 / 2, right: 5 / 2),
-              ),
-            ),
-          ),
         ],
       ),
     );

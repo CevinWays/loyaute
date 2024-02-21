@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loyaute/app/consts/loyaute_images.dart';
@@ -11,12 +12,38 @@ import '../../../../app/styles/loyaute_text_style.dart';
 
 class HomePage extends GetView<HomeController> {
   static const String routeName = '/home';
-  const HomePage({super.key});
+
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: buildBody(context),
+      bottomNavigationBar: buildBottomNavBar(context),
+    );
+  }
+
+  Widget buildBottomNavBar(BuildContext context) {
+    return BottomNavigationBar(
+      onTap: (value) => controller.onItemTapped(value),
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.history),
+          label: 'History',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          label: 'Inbox',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 
@@ -233,7 +260,8 @@ class HomePage extends GetView<HomeController> {
                             width: 56.0,
                             height: 56.0,
                             decoration: const ShapeDecoration(
-                                color: blueLoyautePrimary, shape: CircleBorder()),
+                                color: blueLoyautePrimary,
+                                shape: CircleBorder()),
                             child: Image.asset(
                               imgLoyautePlain,
                               width: 21.0,
@@ -323,6 +351,546 @@ class HomePage extends GetView<HomeController> {
                   ],
                 ),
               ),
+              const SizedBox(height: 32),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 24.0),
+                child: Text(
+                  'Latest Promo',
+                  textAlign: TextAlign.start,
+                  style: LoyauteTextStyle.subtitle2(
+                    context: context,
+                    color: blackLoyaute,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Obx(
+                () => SizedBox(
+                  height: 200,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: CarouselSlider(
+                          items: imageSliders,
+                          carouselController: controller.carouselController,
+                          options: CarouselOptions(
+                            autoPlay: true,
+                            enlargeCenterPage: true,
+                            aspectRatio: 2.0,
+                            onPageChanged: (index, reason) {
+                              controller.imageChanged(index);
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: imgList.asMap().entries.map((entry) {
+                          return GestureDetector(
+                            onTap: () => controller.carouselController
+                                .animateToPage(entry.key),
+                            child: Container(
+                              width: 10.0,
+                              height: 10.0,
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 8.0, horizontal: 4.0),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: (Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Colors.white
+                                          : Colors.black)
+                                      .withOpacity(
+                                          controller.current == entry.key
+                                              ? 0.9
+                                              : 0.4)),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 16, left: 24, right: 24),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular Merchant',
+                          style: LoyauteTextStyle.subtitle2(
+                            context: context,
+                            color: blackLoyaute,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'View more',
+                          style: LoyauteTextStyle.caption(
+                            context: context,
+                            color: blueLoyautePrimary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 16.0, left: 8.0),
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 64.0,
+                            height: 64.0,
+                            decoration: const ShapeDecoration(
+                                color: blueLoyautePrimary,
+                                shape: CircleBorder()),
+                            child: Image.asset(
+                              imgLoyautePlain,
+                              width: 21.0,
+                              height: 17.5,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 8.0,
+                          ),
+                          Text(
+                            'Pizza Hut',
+                            style: LoyauteTextStyle.bodyText1(
+                              context: context,
+                              color: blackLoyaute,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: 7,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 16, left: 24, right: 24),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular Rewards',
+                          style: LoyauteTextStyle.subtitle2(
+                            context: context,
+                            color: blackLoyaute,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'View more',
+                          style: LoyauteTextStyle.caption(
+                            context: context,
+                            color: blueLoyautePrimary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 16.0, left: 16.0),
+                height: 50,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: grayLoyaute2,
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 12.0,
+                              horizontal: 12.0,
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  imgLoyauteBlue,
+                                  width: 18.0,
+                                ),
+                                const SizedBox(
+                                  width: 4.0,
+                                ),
+                                Text(
+                                  'Food',
+                                  style: LoyauteTextStyle.bodyText1(
+                                    context: context,
+                                    fontWeight: FontWeight.w500,
+                                  )?.copyWith(fontSize: 12.0),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: 7,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 8.0,
+                  bottom: 16.0,
+                ),
+                child: GridView.count(
+                  primary: false,
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  crossAxisCount: 2,
+                  childAspectRatio: 1 / 1.70,
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 158,
+                          height: 158,
+                          decoration: BoxDecoration(
+                              color: blueLoyautePrimary,
+                              borderRadius: BorderRadius.circular(11.0)),
+                          padding: const EdgeInsets.all(8),
+                          child: const Text(''),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              'Starbucks',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        Text(
+                          'Monday Mood Booster',
+                          overflow: TextOverflow.ellipsis,
+                          style: LoyauteTextStyle.subtitle1(
+                              context: context, fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          'Point earned',
+                          style: LoyauteTextStyle.bodyText1(
+                            context: context,
+                            color: grayLoyaute1,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              '250',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 158,
+                          height: 158,
+                          decoration: BoxDecoration(
+                              color: blueLoyautePrimary,
+                              borderRadius: BorderRadius.circular(11.0)),
+                          padding: const EdgeInsets.all(8),
+                          child: const Text(''),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              'Starbucks',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        Text(
+                          'Monday Mood Booster',
+                          overflow: TextOverflow.ellipsis,
+                          style: LoyauteTextStyle.subtitle1(
+                              context: context, fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          'Point earned',
+                          style: LoyauteTextStyle.bodyText1(
+                            context: context,
+                            color: grayLoyaute1,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              '250',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 158,
+                          height: 158,
+                          decoration: BoxDecoration(
+                              color: blueLoyautePrimary,
+                              borderRadius: BorderRadius.circular(11.0)),
+                          padding: const EdgeInsets.all(8),
+                          child: const Text(''),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              'Starbucks',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        Text(
+                          'Monday Mood Booster',
+                          overflow: TextOverflow.ellipsis,
+                          style: LoyauteTextStyle.subtitle1(
+                              context: context, fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          'Point earned',
+                          style: LoyauteTextStyle.bodyText1(
+                            context: context,
+                            color: grayLoyaute1,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              '250',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 158,
+                          height: 158,
+                          decoration: BoxDecoration(
+                              color: blueLoyautePrimary,
+                              borderRadius: BorderRadius.circular(11.0)),
+                          padding: const EdgeInsets.all(8),
+                          child: const Text(''),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              'Starbucks',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        Text(
+                          'Monday Mood Booster',
+                          overflow: TextOverflow.ellipsis,
+                          style: LoyauteTextStyle.subtitle1(
+                              context: context, fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Text(
+                          'Point earned',
+                          style: LoyauteTextStyle.bodyText1(
+                            context: context,
+                            color: grayLoyaute1,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 16.0,
+                              height: 16.0,
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: const ShapeDecoration(
+                                  color: blueLoyautePrimary,
+                                  shape: CircleBorder()),
+                              child: Image.asset(
+                                imgLoyauteBlue,
+                              ),
+                            ),
+                            Text(
+                              '250',
+                              style:
+                                  LoyauteTextStyle.bodyText1(context: context),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
           Positioned(
@@ -379,4 +947,17 @@ class HomePage extends GetView<HomeController> {
 
   void onVoucherPressed(BuildContext context) =>
       Get.toNamed(VoucherPage.routeName);
+
+  final List<Widget> imageSliders = [
+    'assets/images/img_promo1.png',
+    'assets/images/img_promo1.png',
+    'assets/images/img_promo1.png'
+  ]
+      .map((item) => Container(
+            margin: const EdgeInsets.all(5.0),
+            child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                child: Image.asset(item, fit: BoxFit.cover, width: 1000.0)),
+          ))
+      .toList();
 }

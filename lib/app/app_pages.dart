@@ -49,7 +49,7 @@ final pageRoutes = [
   ),
   GetPage(
     name: HomePage.routeName,
-    page: () => const HomePage(),
+    page: () => HomePage(),
     binding: HomeBinding(),
   ),
   GetPage(

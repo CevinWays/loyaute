@@ -14,16 +14,42 @@ class HistoryPage extends GetView<HistoryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: buildBody(context),
+      bottomNavigationBar: buildBottomNavBar(context),
+    );
+  }
+
+  Widget buildBottomNavBar(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: 1,
+      onTap: (value) => controller.onItemTapped(value),
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.history),
+          label: 'History',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          label: 'Inbox',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 
   Widget buildBody(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 48, bottom: 16.0),
+            margin: const EdgeInsets.only(top: 48, bottom: 16.0),
             child: Text(
               'History',
               style: LoyauteTextStyle.headline6(
@@ -37,23 +63,23 @@ class HistoryPage extends GetView<HistoryController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(bottom: 8.0),
+                margin: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
                   'December 2023',
                   style: LoyauteTextStyle.bodyText1(
-                      context: context, color: grayLoyaute),
+                      context: context, color: grayLoyaute1),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 16.0),
+                margin: const EdgeInsets.only(bottom: 16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.only(right: 8.0),
                           decoration: BoxDecoration(
                               color: blueLoyautePrimary,
                               borderRadius: BorderRadius.circular(20)),
@@ -70,10 +96,13 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             Text(
                               '25 December 2023, 10:24',
                               style: LoyauteTextStyle.bodyText2(
-                                      context: context, color: grayLoyaute)
+                                      context: context, color: grayLoyaute1)
                                   ?.copyWith(fontSize: 12),
                             ),
                           ],
@@ -88,15 +117,15 @@ class HistoryPage extends GetView<HistoryController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 16.0),
+                margin: const EdgeInsets.only(bottom: 16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.only(right: 8.0),
                           decoration: BoxDecoration(
                               color: blueLoyautePrimary,
                               borderRadius: BorderRadius.circular(20)),
@@ -113,10 +142,13 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             Text(
                               '25 December 2023, 10:24',
                               style: LoyauteTextStyle.bodyText2(
-                                      context: context, color: grayLoyaute)
+                                      context: context, color: grayLoyaute1)
                                   ?.copyWith(fontSize: 12),
                             ),
                           ],
@@ -131,15 +163,15 @@ class HistoryPage extends GetView<HistoryController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 32.0),
+                margin: const EdgeInsets.only(bottom: 32.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.only(right: 8.0),
                           decoration: BoxDecoration(
                               color: blueLoyautePrimary,
                               borderRadius: BorderRadius.circular(20)),
@@ -156,10 +188,13 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             Text(
                               '25 December 2023, 10:24',
                               style: LoyauteTextStyle.bodyText2(
-                                      context: context, color: grayLoyaute)
+                                      context: context, color: grayLoyaute1)
                                   ?.copyWith(fontSize: 12),
                             ),
                           ],
@@ -174,23 +209,23 @@ class HistoryPage extends GetView<HistoryController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 8.0),
+                margin: const EdgeInsets.only(bottom: 8.0),
                 child: Text(
                   'November 2023',
                   style: LoyauteTextStyle.bodyText1(
-                      context: context, color: grayLoyaute),
+                      context: context, color: grayLoyaute1),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 16.0),
+                margin: const EdgeInsets.only(bottom: 16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.only(right: 8.0),
                           decoration: BoxDecoration(
                               color: blueLoyautePrimary,
                               borderRadius: BorderRadius.circular(20)),
@@ -207,10 +242,13 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             Text(
                               '25 December 2023, 10:24',
                               style: LoyauteTextStyle.bodyText2(
-                                      context: context, color: grayLoyaute)
+                                      context: context, color: grayLoyaute1)
                                   ?.copyWith(fontSize: 12),
                             ),
                           ],
@@ -225,15 +263,15 @@ class HistoryPage extends GetView<HistoryController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 16.0),
+                margin: const EdgeInsets.only(bottom: 16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.only(right: 8.0),
                           decoration: BoxDecoration(
                               color: blueLoyautePrimary,
                               borderRadius: BorderRadius.circular(20)),
@@ -250,10 +288,13 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             Text(
                               '25 December 2023, 10:24',
                               style: LoyauteTextStyle.bodyText2(
-                                      context: context, color: grayLoyaute)
+                                      context: context, color: grayLoyaute1)
                                   ?.copyWith(fontSize: 12),
                             ),
                           ],
@@ -268,15 +309,15 @@ class HistoryPage extends GetView<HistoryController> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 32.0),
+                margin: const EdgeInsets.only(bottom: 32.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.only(right: 8.0),
                           decoration: BoxDecoration(
                               color: blueLoyautePrimary,
                               borderRadius: BorderRadius.circular(20)),
@@ -293,10 +334,13 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
                             Text(
                               '25 December 2023, 10:24',
                               style: LoyauteTextStyle.bodyText2(
-                                      context: context, color: grayLoyaute)
+                                      context: context, color: grayLoyaute1)
                                   ?.copyWith(fontSize: 12),
                             ),
                           ],
