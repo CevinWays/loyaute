@@ -22,7 +22,7 @@ class VoucherPage extends StatefulWidget {
 class _VoucherPageState extends State<VoucherPage> {
   int _current = 0;
 
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +79,8 @@ class _VoucherPageState extends State<VoucherPage> {
     return AppBar(
       leading: GestureDetector(
           onTap: () => Navigator.pop(context),
-          child: const Icon(Icons.arrow_back_ios,
-              size: 15, color: Colors.black)),
+          child:
+              const Icon(Icons.arrow_back_ios, size: 15, color: Colors.black)),
       centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0,

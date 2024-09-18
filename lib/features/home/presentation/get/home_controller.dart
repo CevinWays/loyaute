@@ -5,7 +5,7 @@ import 'package:loyaute/features/profile/presentation/pages/profile_page.dart';
 
 class HomeController extends GetxController {
   final _current = 0.obs;
-  final CarouselController carouselController = CarouselController();
+  final CarouselSliderController carouselController = CarouselSliderController();
 
   int get current => _current.value;
 

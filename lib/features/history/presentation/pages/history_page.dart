@@ -96,7 +96,7 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(
@@ -142,7 +142,7 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(
@@ -188,7 +188,7 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(
@@ -242,7 +242,7 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(
@@ -288,7 +288,7 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(
@@ -334,7 +334,7 @@ class HistoryPage extends GetView<HistoryController> {
                               style:
                                   LoyauteTextStyle.bodyText1(context: context),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(

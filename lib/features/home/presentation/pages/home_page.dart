@@ -354,7 +354,7 @@ class HomePage extends GetView<HomeController> {
               const SizedBox(height: 32),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 24.0),
+                margin: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
                   'Latest Promo',
                   textAlign: TextAlign.start,
